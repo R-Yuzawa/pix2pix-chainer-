@@ -40,9 +40,9 @@ def out_image(updater, enc, dec, rows, cols, seed, dst):
             z = enc(x_in)
             x_out = dec(z)
             
-            in_all[it,:] = x_in.data.get()[0,:]
-            gt_all[it,:] = t_out.get()[0,:]
-            gen_all[it,:] = x_out.data.get()[0,:]
+            in_all[it,:] = x_in[0,:]
+            gt_all[it,:] = t_out[0,:]
+            gen_all[it,:] = x_out[0,:]
         
         
         def save_image(x, name, mode=None):
