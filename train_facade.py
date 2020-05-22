@@ -110,7 +110,7 @@ def main():
     trainer.extend(
         out_image(
             updater, enc, dec,
-            5, 5, args.seed, args.out),
+            3, 3, args.seed, args.out),
         trigger=snapshot_interval)
 
     if args.resume:
