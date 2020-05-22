@@ -47,9 +47,11 @@ def main():
     print('')
 
     # Set up a neural network to train
-    enc = Encoder(in_ch=12)
+    #enc = Encoder(in_ch=12)
+    enc = Encoder(in_ch=3)
     dec = Decoder(out_ch=3)
-    dis = Discriminator(in_ch=12, out_ch=3)
+    #dis = Discriminator(in_ch=12, out_ch=3)
+    dis = Discriminator(in_ch=3, out_ch=3)
     
     if args.gpu >= 0:
         chainer.cuda.get_device(args.gpu).use()  # Make a specified GPU current
@@ -67,8 +69,11 @@ def main():
     opt_dec = make_optimizer(dec)
     opt_dis = make_optimizer(dis)
 
-    train_d = FacadeDataset(args.dataset, data_range=(1,300))
-    test_d = FacadeDataset(args.dataset, data_range=(300,379))
+    #train_d = FacadeDataset(args.dataset, data_range=(1,300))
+    train_d = FacadeDataset(args.dataset, data_range=(1,100))
+    #test_d = FacadeDataset(args.dataset, data_range=(300,379))
+    test_d = FacadeDataset(args.dataset, data_range=(100,120))
+    
     #train_iter = chainer.iterators.MultiprocessIterator(train_d, args.batchsize, n_processes=4)
     #test_iter = chainer.iterators.MultiprocessIterator(test_d, args.batchsize, n_processes=4)
     train_iter = chainer.iterators.SerialIterator(train_d, args.batchsize)
