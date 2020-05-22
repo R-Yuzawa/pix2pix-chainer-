@@ -18,8 +18,8 @@ def out_image(updater, enc, dec, rows, cols, seed, dst):
         
         w_in = 256
         w_out = 256
-        #in_ch = 12
-        in_ch = 3
+        in_ch = 12
+        #in_ch = 3
         out_ch = 3
         
         in_all = np.zeros((n_images, in_ch, w_in, w_in)).astype("i")
@@ -42,9 +42,12 @@ def out_image(updater, enc, dec, rows, cols, seed, dst):
             x_out = dec(z)
             
             #in_all[it,:] = x_in.data.get()[0,:]で,numpyにgetなんてもの無いよ的なエラー出るのであきらめてgetを外す.
-            in_all[it,:] = x_in.data[0,:]
-            gt_all[it,:] = t_out.data[0,:]
-            gen_all[it,:] = x_out.data[0,:]
+            in_all[it,:] = x_in.data.get()[0,:]
+            gt_all[it,:] = t_out.data.get()[0,:]
+            gen_all[it,:] = x_out.data.get()[0,:]
+#             in_all[it,:] = x_in.data[0,:]
+#             gt_all[it,:] = t_out.data[0,:]
+#             gen_all[it,:] = x_out.data[0,:]
         
         
         def save_image(x, name, mode=None):
