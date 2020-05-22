@@ -47,11 +47,11 @@ def main():
     print('')
 
     # Set up a neural network to train
-    #enc = Encoder(in_ch=12)
-    enc = Encoder(in_ch=3)
+    enc = Encoder(in_ch=12)
+    #enc = Encoder(in_ch=3)
     dec = Decoder(out_ch=3)
-    #dis = Discriminator(in_ch=12, out_ch=3)
-    dis = Discriminator(in_ch=3, out_ch=3)
+    dis = Discriminator(in_ch=12, out_ch=3)
+    #dis = Discriminator(in_ch=3, out_ch=3)
     
     if args.gpu >= 0:
         chainer.cuda.get_device(args.gpu).use()  # Make a specified GPU current
