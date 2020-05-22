@@ -18,7 +18,8 @@ def out_image(updater, enc, dec, rows, cols, seed, dst):
         
         w_in = 256
         w_out = 256
-        in_ch = 12
+        #in_ch = 12
+        in_ch = 3
         out_ch = 3
         
         in_all = np.zeros((n_images, in_ch, w_in, w_in)).astype("i")
