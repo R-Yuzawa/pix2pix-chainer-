@@ -43,7 +43,7 @@ def out_image(updater, enc, dec, rows, cols, seed, dst):
             
             #in_all[it,:] = x_in.data.get()[0,:]で,numpyにgetなんてもの無いよ的なエラー出るのであきらめてgetを外す.
             in_all[it,:] = x_in.data.get()[0,:]
-            gt_all[it,:] = t_out.data.get()[0,:]
+            #gt_all[it,:] = t_out.data.get()[0,:]
             gen_all[it,:] = x_out.data.get()[0,:]
 #             in_all[it,:] = x_in.data[0,:]
 #             gt_all[it,:] = t_out.data[0,:]
@@ -75,7 +75,7 @@ def out_image(updater, enc, dec, rows, cols, seed, dst):
             x[:,0,:,:] += np.uint8(15*i*in_all[:,i,:,:])
         save_image(x, "in", mode='HSV')
         
-        x = np.asarray(np.clip(gt_all * 128+128, 0.0, 255.0), dtype=np.uint8)
-        save_image(x, "gt")
+#         x = np.asarray(np.clip(gt_all * 128+128, 0.0, 255.0), dtype=np.uint8)
+#         save_image(x, "gt")
         
     return make_image
